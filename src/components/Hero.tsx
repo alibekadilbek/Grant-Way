@@ -2,7 +2,11 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-export default function Hero() {
+interface HeroProps {
+  onStartJourney: () => void;
+}
+
+export default function Hero({ onStartJourney }: HeroProps) {
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -35,12 +39,12 @@ export default function Hero() {
               Спросить ИИ-консультанта
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a 
-              href="#grants"
+            <button 
+              onClick={onStartJourney}
               className="w-full sm:w-auto px-8 py-4 bg-white border border-zinc-200 text-zinc-900 rounded-2xl font-medium hover:bg-zinc-50 transition-all"
             >
-              Каталог программ
-            </a>
+              Начать путь
+            </button>
           </div>
         </motion.div>
       </div>

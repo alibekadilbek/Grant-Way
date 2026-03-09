@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import GrantCard from './components/GrantCard';
@@ -6,6 +6,7 @@ import AIConsultant from './components/AIConsultant';
 import Roadmap from './components/Roadmap';
 import UniversityDatabase from './components/UniversityDatabase';
 import GrantCalculator from './components/GrantCalculator';
+import LeadFormModal from './components/LeadFormModal';
 import { Globe, GraduationCap, Award, Users } from 'lucide-react';
 
 const popularGrants = [
@@ -60,12 +61,17 @@ const popularGrants = [
 ];
 
 export default function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900">
-      <Navbar />
+      <Navbar onStartJourney={openModal} />
       
       <main>
-        <Hero />
+        <Hero onStartJourney={openModal} />
         
         {/* Stats Section */}
         <section className="py-12 border-y border-zinc-100 bg-zinc-50/50">
@@ -192,17 +198,19 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-2">
               <GraduationCap className="w-6 h-6 text-blue-600" />
-              <span className="text-lg font-bold tracking-tight text-zinc-900">GrantWay <span className="text-blue-600">KZ</span></span>
+              <span className="text-lg font-bold tracking-tight text-zinc-900">Grant <span className="text-blue-600">Hunter</span></span>
             </div>
             <div className="flex gap-8 text-sm text-zinc-500">
               <a href="#" className="hover:text-blue-600 transition-colors">О проекте</a>
               <a href="#" className="hover:text-blue-600 transition-colors">Контакты</a>
               <a href="#" className="hover:text-blue-600 transition-colors">Политика конфиденциальности</a>
             </div>
-            <p className="text-xs text-zinc-400">© 2024 GrantWay Kazakhstan. Все права защищены.</p>
+            <p className="text-xs text-zinc-400">© 2024 Grant Hunter. Все права защищены.</p>
           </div>
         </div>
       </footer>
+
+      <LeadFormModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }
