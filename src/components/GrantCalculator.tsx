@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calculator, Sparkles, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { calculateProbability } from '../services/dataService';
 
 interface CalculationResult {
   uni_name: string;
@@ -19,22 +20,17 @@ export default function GrantCalculator() {
   const [results, setResults] = useState<CalculationResult[] | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleCalculate = async () => {
+  const handleCalculate = () => {
     if (!gpa || !ielts) return;
     setLoading(true);
     try {
-      const res = await fetch('/api/calculator', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          gpa: parseFloat(gpa),
-          ielts: parseFloat(ielts),
-          country,
-          specialty
-        })
-      });
-      const data = await res.json();
-      setResults(data);
+      const data = calculateProbability(
+        parseFloat(gpa),
+        parseFloat(ielts),
+        country,
+        specialty
+      );
+      setResults(data as CalculationResult[]);
     } catch (err) {
       console.error(err);
     } finally {

@@ -1,39 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MapPin, GraduationCap, ExternalLink, Mail, Filter } from 'lucide-react';
-
-interface UniversityProgram {
-  id: number;
-  name: string;
-  country: string;
-  city: string;
-  website: string;
-  email: string;
-  description: string;
-  program_name: string;
-  specialty: string;
-  degree: string;
-  grant_name: string;
-  criteria: string;
-}
+import { getUniversities } from '../services/dataService';
 
 export default function UniversityDatabase() {
-  const [data, setData] = useState<UniversityProgram[]>([]);
+  const [data, setData] = useState<any[]>([]);
   const [search, setSearch] = useState('');
   const [country, setCountry] = useState('');
   const [specialty, setSpecialty] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
+  const fetchData = () => {
     setLoading(true);
     try {
-      const params = new URLSearchParams();
-      if (search) params.append('search', search);
-      if (country) params.append('country', country);
-      if (specialty) params.append('specialty', specialty);
-      
-      const res = await fetch(`/api/universities?${params.toString()}`);
-      const json = await res.json();
-      setData(json);
+      const results = getUniversities(search, country || "Any", specialty || "Any");
+      setData(results);
     } catch (err) {
       console.error(err);
     } finally {
