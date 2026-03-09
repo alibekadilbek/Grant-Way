@@ -66,15 +66,15 @@ export default function GrantCalculator() {
             <div className="space-y-6 bg-white/5 backdrop-blur-xl p-8 rounded-[32px] border border-white/10">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">GPA (из 5.0)</label>
+                  <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">GPA (из 4.0)</label>
                   <input 
                     type="number" 
                     step="0.1" 
                     min="0" 
-                    max="5"
+                    max="4"
                     value={gpa}
                     onChange={(e) => setGpa(e.target.value)}
-                    placeholder="4.5"
+                    placeholder="3.8"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
                   />
                 </div>

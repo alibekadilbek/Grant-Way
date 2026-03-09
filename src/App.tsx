@@ -202,7 +202,14 @@ export default function App() {
             </div>
             <div className="flex gap-8 text-sm text-zinc-500">
               <a href="#" className="hover:text-blue-600 transition-colors">О проекте</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Контакты</a>
+              <a 
+                href="https://www.instagram.com/granthunter.kz?igsh=MTUwMm12N3Y2N2htNA%3D%3D&utm_source=qr" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-blue-600 transition-colors"
+              >
+                Контакты
+              </a>
               <a href="#" className="hover:text-blue-600 transition-colors">Политика конфиденциальности</a>
             </div>
             <p className="text-xs text-zinc-400">© 2024 Grant Hunter. Все права защищены.</p>

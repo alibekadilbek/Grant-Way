@@ -141,7 +141,9 @@ export default function UniversityDatabase() {
                     Сайт вуза
                   </a>
                   <a 
-                    href={`mailto:${item.email}`}
+                    href="https://www.instagram.com/granthunter.kz?igsh=MTUwMm12N3Y2N2htNA%3D%3D&utm_source=qr"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-blue-600 transition-colors"
                   >
                     <Mail className="w-3 h-3" />
